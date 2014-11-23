@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Network Chess";
+}
+<div>
+    <button id="startNewGame">Start new Game!</button>    
+</div>
+
+<script>
+    ;(function() {
+        $('#startNewGame').on('click', function() {
+            window.location.href = "Home/NewGame";
+        });
+    })();
+</script>
