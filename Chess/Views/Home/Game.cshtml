@@ -5,15 +5,18 @@
 <script src="~/Content/js/chess.js"></script>
 <script src="~/Content/js/chessboard-0.3.0.js"></script>
 
-<div id="board" style="width: 400px"></div>
-<div>
-    <button id="startBtn">Start</button>
-    <button id="clearBtn">Clear</button>
+<div id="board" style="width: 640px; display: block; margin-left: auto; margin-right: auto;"></div>
+<div id="dashboard" style="width: 640px; display: block; margin-left: auto; margin-right: auto;">
+    <div>
+        <button id="startBtn">Start</button>
+        <button id="clearBtn">Clear</button>
+    </div>
+    <div style="width: 640px; display: block; margin-left: auto; margin-right: auto;">
+        <p>Status: <span id="status"></span></p>
+        <p>FEN: <span id="fen"></span></p>
+        <p>PGN: <span id="pgn"></span></p>
+    </div>
 </div>
-<p>Status: <span id="status"></span></p>
-<p>FEN: <span id="fen"></span></p>
-<p>PGN: <span id="pgn"></span></p>
-
 <script>
     var board,
   game = new Chess(),
