@@ -1,3 +1,5 @@
 /Chess/bin
-/Chess.Tests/bin/Debug
-/Chess.Tests/obj/Debug
+/Chess.Tests/bin
+/Chess.Tests/obj
+/Chess.Data/bin
+/Chess.Data/obj
