@@ -22,6 +22,16 @@ namespace Chess.Data.Repositories
             return _service.Find(g => g.GameId.Equals(gameId));
         }
 
+        public Game GenerateNewGame()
+        {
+            var newGame = new Game
+                          {
+                              StartDate = DateTime.Now,
+                              GameId = Guid.NewGuid()
+                          };
+            return Add(newGame);
+        }
+
         public Game Add(Game game)
         {
             return _service.Add(game);

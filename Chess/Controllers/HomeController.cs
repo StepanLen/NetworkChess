@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Chess.Data.Repositories;
 
 namespace Chess.Controllers
 {
@@ -16,9 +17,11 @@ namespace Chess.Controllers
 
         public ActionResult NewGame()
         {
-            var ID = Guid.NewGuid();
-            //TODO Stepan: Save the game
-            return RedirectToAction("Game", new RouteValueDictionary(new { ID = ID }));
+            var repo = new GamesRepository();
+            var newGame = repo.GenerateNewGame();
+            repo.Save(newGame);
+
+            return RedirectToAction("Game", new RouteValueDictionary(new { ID = newGame.GameId }));
         }
 
         public ActionResult Game(Guid id)

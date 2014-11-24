@@ -87,6 +87,7 @@ F:\MyProjects\Chess\Chess\Chess\obj\Debug\Chess.pdb
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Chess.dll
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Chess.pdb
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Antlr3.Runtime.dll
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Chess.Data.dll
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\DotNetOpenAuth.AspNet.dll
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\DotNetOpenAuth.Core.dll
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\DotNetOpenAuth.OAuth.Consumer.dll
@@ -112,6 +113,7 @@ f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\System.Web.WebPages.Razor.dll
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\WebGrease.dll
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\WebMatrix.Data.dll
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\WebMatrix.WebData.dll
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Chess.Data.pdb
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\EntityFramework.xml
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Newtonsoft.Json.xml
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\System.Web.Helpers.xml
@@ -170,3 +172,5 @@ f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\zh-Hant\System.Spatial.resource
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\obj\Debug\Chess.csprojResolveAssemblyReference.cache
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\obj\Debug\Chess.dll
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\obj\Debug\Chess.pdb
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\EntityFramework.SqlServer.dll
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\EntityFramework.SqlServer.xml
