@@ -1,7 +1,11 @@
-﻿@{
+﻿@using Chess
+@model Chess.Data.Game
+@{
     ViewBag.Title = "Network Chess";
 }
 <link href="~/Content/css/chessboard-0.3.0.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.signalR-2.1.2.js"></script>
+<script src="~/signalr/hubs"></script>
 <script src="~/Content/js/chess.js"></script>
 <script src="~/Content/js/chessboard-0.3.0.js"></script>
 
@@ -94,10 +98,12 @@
             console.log("Old position: " + ChessBoard.objToFen(oldPos));
             console.log("New position: " + ChessBoard.objToFen(newPos));
             console.log("--------------------");
+
+            move(ChessBoard.objToFen(oldPos), ChessBoard.objToFen(newPos));
         };
 
         var cfg = {
-            orientation: 'black',
+            orientation: '@Model.Orientation()',
             draggable: true,
             position: 'start',
             onDragStart: onDragStart,
@@ -112,5 +118,39 @@
         $('#startBtn').on('click', board.start);
         $('#clearBtn').on('click', board.clear);
 
+        //#region SignalR
+        var gamesHub = $.connection.gamesHub;
+
+        //on connected
+        $.connection.hub.start().done(function () {
+            console.log("Connection was established.");
+
+            //register the player
+            gamesHub.server.register();
+        });
+        
+        gamesHub.client.showMessage = function (message) {
+            alert(message);
+        };
+
+        gamesHub.client.getGameId = function () {
+            return gameId();
+        };
+
+        function move(oldPosition, newPosition) {
+            gamesHub.server.move(gameId(), newPosition.replace(oldPosition, ""), newPosition);
+        }
+        //endregion
+
+        function gameId() {
+            console.log(getParameterByName("id"));
+            return getParameterByName("id");
+        }
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
     })();
 </script>

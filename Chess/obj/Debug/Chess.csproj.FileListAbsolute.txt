@@ -174,3 +174,16 @@ f:\MyProjects\Chess\Chess\NetworkChess\Chess\obj\Debug\Chess.dll
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\obj\Debug\Chess.pdb
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\EntityFramework.SqlServer.dll
 f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\EntityFramework.SqlServer.xml
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Microsoft.AspNet.SignalR.Core.dll
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Microsoft.AspNet.SignalR.Owin.dll
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Microsoft.Owin.dll
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Microsoft.Owin.Host.SystemWeb.dll
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Microsoft.Owin.Security.dll
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Owin.dll
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Microsoft.AspNet.SignalR.Core.xml
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Microsoft.AspNet.SignalR.Owin.xml
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Microsoft.Owin.xml
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Microsoft.Owin.Host.SystemWeb.xml
+f:\MyProjects\Chess\Chess\NetworkChess\Chess\bin\Microsoft.Owin.Security.xml

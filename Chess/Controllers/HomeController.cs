@@ -15,10 +15,10 @@ namespace Chess.Controllers
             return View();
         }
 
-        public ActionResult NewGame()
+        public ActionResult NewGame(string color)
         {
             var repo = new GamesRepository();
-            var newGame = repo.GenerateNewGame();
+            var newGame = repo.GenerateNewGame(color);
             repo.Save(newGame);
 
             return RedirectToAction("Game", new RouteValueDictionary(new { ID = newGame.GameId }));
@@ -26,7 +26,14 @@ namespace Chess.Controllers
 
         public ActionResult Game(Guid id)
         {
-            return View();
+            var repo = new GamesRepository();
+            var game = repo.Get(id);
+            if (game == null)
+            {
+                return HttpNotFound("Can't find game with ID: " + id);
+            }
+
+            return View(game);
         }
     }
 }

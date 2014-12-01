@@ -2,13 +2,18 @@
     ViewBag.Title = "Network Chess";
 }
 <div>
+    <select id="ddlBlackOrWhite">
+        <option>White</option>
+        <option>Black</option>
+    </select>
     <button id="startNewGame">Start new Game!</button>    
 </div>
 
 <script>
     ;(function() {
         $('#startNewGame').on('click', function() {
-            window.location.href = "Home/NewGame";
+            var color = $("#ddlBlackOrWhite option:selected").text();
+            window.location.href = "Home/NewGame/?color=" + color;
         });
     })();
 </script>

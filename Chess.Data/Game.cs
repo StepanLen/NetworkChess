@@ -20,5 +20,8 @@ namespace Chess.Data
         public string History { get; set; }
         public System.DateTime StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
+        public string CreatorId { get; set; }
+        public string OpponentId { get; set; }
+        public bool IsCreatorPlayWhite { get; set; }
     }
 }

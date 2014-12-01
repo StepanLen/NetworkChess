@@ -24,5 +24,7 @@ namespace Chess
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
         }
+
+        
     }
 }
