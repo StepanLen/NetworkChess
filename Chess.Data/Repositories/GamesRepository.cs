@@ -44,7 +44,7 @@ namespace Chess.Data.Repositories
             return _service.Update(game, game.Id);
         }
 
-        public void Move(string gameID, string move, string fen)
+        public void Move(string gameID, string oldPosition, string currentPosition)
         {
             var game = Get(new Guid(gameID));
             if (game == null)
@@ -52,7 +52,9 @@ namespace Chess.Data.Repositories
                 throw new Exception("can't find the game with ID: " + gameID);
             }
 
-            game.FEN = fen;
+            game.FEN = currentPosition;
+
+            var move = String.Format("{0}->{1}", oldPosition, currentPosition);
 
             if (String.IsNullOrEmpty(game.History))
             {
@@ -88,6 +90,22 @@ namespace Chess.Data.Repositories
             }
 
             Save(game);
+        }
+
+        public string GetOpponentID(string gameID, string callerID)
+        {
+            var game = Get(new Guid(gameID));
+
+            if (game != null)
+            {
+                var opponentID = game.CreatorId.Equals(callerID) ? game.OpponentId : game.CreatorId;
+                if (!String.IsNullOrEmpty(opponentID))
+                {
+                    return opponentID;
+                }
+            }
+
+            return null;
         }
     }
 }

@@ -99,7 +99,7 @@
             console.log("New position: " + ChessBoard.objToFen(newPos));
             console.log("--------------------");
 
-            move(ChessBoard.objToFen(oldPos), ChessBoard.objToFen(newPos));
+            onMove(ChessBoard.objToFen(oldPos), ChessBoard.objToFen(newPos));
         };
 
         var cfg = {
@@ -118,7 +118,8 @@
         $('#startBtn').on('click', board.start);
         $('#clearBtn').on('click', board.clear);
 
-        //#region SignalR
+
+
         var gamesHub = $.connection.gamesHub;
 
         //on connected
@@ -126,31 +127,26 @@
             console.log("Connection was established.");
 
             //register the player
-            gamesHub.server.register();
+            gamesHub.server.register(gameId());
         });
-        
+
         gamesHub.client.showMessage = function (message) {
             alert(message);
         };
 
-        gamesHub.client.getGameId = function () {
-            return gameId();
-        };
-
-        function move(oldPosition, newPosition) {
-            gamesHub.server.move(gameId(), newPosition.replace(oldPosition, ""), newPosition);
+        gamesHub.client.setPosition = function(position) {
+            board.position(position, true);
         }
-        //endregion
+
+        function onMove(oldPosition, newPosition) {
+            gamesHub.server.onMove(gameId(), oldPosition, newPosition);
+        }
 
         function gameId() {
-            console.log(getParameterByName("id"));
-            return getParameterByName("id");
-        }
-        function getParameterByName(name) {
-            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                results = regex.exec(location.search);
-            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            var url = window.location.toString();
+            var id = url.substring(url.lastIndexOf('/') + 1);
+            //console.log(id);
+            return id;
         }
     })();
 </script>

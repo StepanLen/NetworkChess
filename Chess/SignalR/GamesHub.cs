@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using Chess.Data;
 using Chess.Data.Repositories;
 using Microsoft.AspNet.SignalR;
 
@@ -11,27 +12,18 @@ namespace Chess.SignalR
     public class GamesHub : Hub
     {
         private readonly GamesRepository _repository  = new GamesRepository();
-        
-        //public void Hello()
-        //{
-        //    Clients.All.hello();
-        //}
 
-        public override Task OnConnected()
+        public void register(string gameID)
         {
-            return base.OnConnected();
+            _repository.RegisterPlayer(gameID, Context.ConnectionId);            
         }
 
-        public void register()
-        {
-            _repository.RegisterPlayer(GameID(), Context.ConnectionId);            
-        }
-
-        public void move(string move, string currentPosition)
+        public void onMove(string gameID, string oldPosition, string currentPosition)
         {
             try
             {
-                _repository.Move(GameID(), move, currentPosition);
+                _repository.Move(gameID, oldPosition, currentPosition);
+                setPosition(gameID, Context.ConnectionId, currentPosition);
             }
             catch (Exception ex)
             {
@@ -39,17 +31,19 @@ namespace Chess.SignalR
             }
         }
 
-        private string GameID()
+        public void setPosition(string gameID, string callerID, string position)
         {
-            var gameId = Clients.Caller.getGameId().ToString();
-            return gameId;
+            var opponentID = _repository.GetOpponentID(gameID, callerID);
+
+            if (!String.IsNullOrEmpty(opponentID))
+            {
+                var opponent = Clients.Client(opponentID);
+                if (opponent != null)
+                {
+                    opponent.setPosition(position);
+                }
+            }
         }
 
-        //public override Task OnDisconnected(bool stopCalled)
-        //{
-        //    //MyUsers.TryRemove(Context.ConnectionId, out garbage);
-
-        //    return base.OnDisconnected(stopCalled);
-        //}
     }
 }

@@ -10,28 +10,16 @@ namespace Chess
     {
         public static string Orientation(this Game game)
         {
-            if (game.IsCreatorPlayWhite)
+
+            if (String.IsNullOrEmpty(game.CreatorId))
             {
-                if (String.IsNullOrEmpty(game.OpponentId))
-                {
-                    return "white";
-                }
-                else
-                {
-                    return "black";
-                }
+                return game.IsCreatorPlayWhite ? "white" : "black";
             }
             else
             {
-                if (String.IsNullOrEmpty(game.OpponentId))
-                {
-                    return "black";
-                }
-                else
-                {
-                    return "white";
-                }
+                return game.IsCreatorPlayWhite ? "black" : "white";
             }
+
         }
     }
 }
